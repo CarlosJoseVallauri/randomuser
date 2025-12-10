@@ -1,0 +1,19 @@
+{
+  "name": "randomuser",
+  "version": "1.0.0",
+  "description": "GUI for the randomuser API",
+  "repository": {
+    "type": "git",
+    "url": "git@github-vallauri.com:CarlosJoseVallauri/randomuser.git"
+  },
+  "license": "ISC",
+  "author": "Carlo",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "dependencies": {
+    "axios": "^1.13.2"
+  }
+}
