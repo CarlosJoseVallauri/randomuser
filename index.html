@@ -11,6 +11,7 @@
 	<script src='./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js'></script>
 	<script src="./node_modules/jquery/dist/jquery.min.js"></script>
 	<script src="./node_modules/axios/dist/axios.min.js"></script>
+	<script src="./js/sort.js"></script>
 	<script src="./js/array.js"></script>
 	<script src="./js/libreria.js"></script>
 	<script src="./js/load.js"></script>
@@ -26,14 +27,14 @@
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<div class="collapse navbar-collapse" id="nav-content">
-					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<ul class="navbar-nav mb-2 mb-lg-0">
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
 								aria-expanded="false" data-bs-auto-close="outside">
 								Filtri
 							</a>
 							<ul class="dropdown-menu">
-								<li class="dropdown-item">
+								<li class="dropdown-item no-mouse">
 									<div class="form-check">
 										<label for="genAll">
 											Tutti
@@ -41,7 +42,7 @@
 										<input checked class="form-check-input" type="radio" id="genAll" name="rdGen" value="all">
 									</div>
 								</li>
-								<li class="dropdown-item">
+								<li class="dropdown-item no-mouse">
 									<div class="form-check">
 										<label for="genMale">
 											Maschio
@@ -49,7 +50,7 @@
 										<input class="form-check-input" type="radio" id="genMale" name="rdGen" value="male">
 									</div>
 								</li>
-								<li class="dropdown-item">
+								<li class="dropdown-item no-mouse">
 									<div class="form-check">
 										<label for="genFem">
 											Femmina
@@ -60,7 +61,7 @@
 								<li>
 									<hr class="dropdown-divider">
 								</li>
-								<li class="dropdown-item">
+								<li class="dropdown-item no-mouse">
 									<div class="form-check">
 										<label for="natFr">
 											Francia
@@ -68,7 +69,7 @@
 										<input class="form-check-input" type="checkbox" id="natFr" name="chkNat" value="fr">
 									</div>
 								</li>
-								<li class="dropdown-item">
+								<li class="dropdown-item no-mouse">
 									<div class="form-check">
 										<label for="natGe">
 											Germania
@@ -76,7 +77,7 @@
 										<input class="form-check-input" type="checkbox" id="natGe" name="chkNat" value="de">
 									</div>
 								</li>
-								<li class="dropdown-item">
+								<li class="dropdown-item no-mouse">
 									<div class="form-check">
 										<label for="natEs">
 											Spagna
@@ -84,7 +85,7 @@
 										<input class="form-check-input" type="checkbox" id="natEs" name="chkNat" value="es">
 									</div>
 								</li>
-								<li class="dropdown-item">
+								<li class="dropdown-item no-mouse">
 									<div class="form-check">
 										<label for="natGb">
 											Regno Unito
@@ -92,7 +93,7 @@
 										<input class="form-check-input" type="checkbox" id="natGb" name="chkNat" value="gb">
 									</div>
 								</li>
-								<li class="dropdown-item">
+								<li class="dropdown-item no-mouse">
 									<div class="form-check">
 										<label for="natUs">
 											Stati Uniti
@@ -103,7 +104,7 @@
 								<li>
 									<hr class="dropdown-divider">
 								</li>
-								<li class="dropdown-item">
+								<li class="dropdown-item no-mouse">
 									<label for="rnNum">
 										Numero persone: 1
 									</label>
@@ -114,10 +115,29 @@
 									<hr class="dropdown-divider">
 								</li>
 								<li>
-									<a class="dropdown-item" href="#">
+									<a class="dropdown-item no-mouse" href="#">
 										<button class="btn btn-danger" id="btnReset">Reset</button>
 										<button class="btn btn-primary" id="btnRequest">Richiedi</button>
 									</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0 user-select-none">
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+								aria-expanded="false" data-bs-auto-close="auto">
+								Ordina per
+							</a>
+							<ul class="dropdown-menu" id="sortList">
+								<li class="dropdown-item" data-sort="name">
+									Nome
+								</li>
+								<li class="dropdown-item" data-sort="ages">
+									Età
+								</li>
+								<li class="dropdown-item" data-sort="random">
+									Casuale
 								</li>
 							</ul>
 						</li>

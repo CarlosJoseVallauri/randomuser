@@ -67,6 +67,11 @@ function listeners() {
             $("i").removeClass("invisible");
         }
     });
+
+    $("#sortList li").on("click", function(){
+        loadedArray.sort(SORTFUNCS[$(this).data("sort")]);
+        loadPerson(loadedArray[currentPerson = 0]);
+    });
 }
 
 function datasets() {

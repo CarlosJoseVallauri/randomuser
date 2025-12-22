@@ -49,17 +49,16 @@
   font-size: 2.4em;
 }
 
-.dropdown-item:active,
-.dropdown-item:focus {
+.dropdown-item.no-mouse:active,
+.dropdown-item.no-mouse:focus {
   background-color: transparent !important;
   color: inherit !important;
 }
 
-.dropdown-item:hover {
+.dropdown-item.no-mouse:hover {
   background-color: transparent !important;
 }
 
-.dropdown-item {
+.dropdown-item.no-mouse {
   cursor: default !important;
 }
-
