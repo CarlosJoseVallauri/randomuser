@@ -3,5 +3,5 @@ async function load(params, callback){
     const results = response?.data?.results;
 
     loadedArray = results;
-    results?.forEach(callback);
+    callback(results.at(0));
 }

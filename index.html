@@ -8,8 +8,10 @@
 	<link rel="stylesheet" href="./css/style.css" />
 	<link rel='stylesheet' href='./node_modules/bootstrap/dist/css/bootstrap.min.css'>
 	<link rel='stylesheet' href='./node_modules/bootstrap-icons/font/bootstrap-icons.min.css'>
+	<script src='./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js'></script>
 	<script src="./node_modules/jquery/dist/jquery.min.js"></script>
 	<script src="./node_modules/axios/dist/axios.min.js"></script>
+	<script src="./js/array.js"></script>
 	<script src="./js/libreria.js"></script>
 	<script src="./js/load.js"></script>
 	<script defer src="./js/dom.js"></script>
@@ -17,16 +19,128 @@
 
 <body class="bg-dark text-light">
 	<div class="container-fluid h-100 p-5">
-		<h1 class="h1 fw-light text-center mb-5">RANDOM USER</h1>
+		<nav class="navbar navbar-expand-lg bg-dark-subtle fixed-top">
+			<div class="container-fluid">
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav-content"
+					aria-controls="nav-content" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="nav-content">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+								aria-expanded="false" data-bs-auto-close="outside">
+								Filtri
+							</a>
+							<ul class="dropdown-menu">
+								<li class="dropdown-item">
+									<div class="form-check">
+										<label for="genAll">
+											Tutti
+										</label>
+										<input checked class="form-check-input" type="radio" id="genAll" name="rdGen" value="all">
+									</div>
+								</li>
+								<li class="dropdown-item">
+									<div class="form-check">
+										<label for="genMale">
+											Maschio
+										</label>
+										<input class="form-check-input" type="radio" id="genMale" name="rdGen" value="male">
+									</div>
+								</li>
+								<li class="dropdown-item">
+									<div class="form-check">
+										<label for="genFem">
+											Femmina
+										</label>
+										<input class="form-check-input" type="radio" id="genFem" name="rdGen" value="female">
+									</div>
+								</li>
+								<li>
+									<hr class="dropdown-divider">
+								</li>
+								<li class="dropdown-item">
+									<div class="form-check">
+										<label for="natFr">
+											Francia
+										</label>
+										<input class="form-check-input" type="checkbox" id="natFr" name="chkNat" value="fr">
+									</div>
+								</li>
+								<li class="dropdown-item">
+									<div class="form-check">
+										<label for="natGe">
+											Germania
+										</label>
+										<input class="form-check-input" type="checkbox" id="natGe" name="chkNat" value="de">
+									</div>
+								</li>
+								<li class="dropdown-item">
+									<div class="form-check">
+										<label for="natEs">
+											Spagna
+										</label>
+										<input class="form-check-input" type="checkbox" id="natEs" name="chkNat" value="es">
+									</div>
+								</li>
+								<li class="dropdown-item">
+									<div class="form-check">
+										<label for="natGb">
+											Regno Unito
+										</label>
+										<input class="form-check-input" type="checkbox" id="natGb" name="chkNat" value="gb">
+									</div>
+								</li>
+								<li class="dropdown-item">
+									<div class="form-check">
+										<label for="natUs">
+											Stati Uniti
+										</label>
+										<input class="form-check-input" type="checkbox" id="natUs" name="chkNat" value="us">
+									</div>
+								</li>
+								<li>
+									<hr class="dropdown-divider">
+								</li>
+								<li class="dropdown-item">
+									<label for="rnNum">
+										Numero persone: 1
+									</label>
+									<br>
+									<input type="range" name="rnNum" id="rnNum" class="form-range" min="1" max="100" value="1">
+								</li>
+								<li>
+									<hr class="dropdown-divider">
+								</li>
+								<li>
+									<a class="dropdown-item" href="#">
+										<button class="btn btn-danger" id="btnReset">Reset</button>
+										<button class="btn btn-primary" id="btnRequest">Richiedi</button>
+									</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+					<form class="d-flex" role="search">
+						<input class="form-control me-2" type="search" placeholder="Cerca..." aria-label="Search" id="search">
+					</form>
+				</div>
+			</div>
+		</nav>
 
-		<div class="container col-lg-6 col-md-9 p-3 border bg-light rounded text-dark text-center">
-			<i class=""></i>
+		<h1 class="h1 fw-light text-center mb-5 mt-5">RANDOM USER</h1>
+
+		<div class="container col-lg-6 col-md-9 p-3 border bg-light rounded text-dark text-center user-select-none">
+			<i class="bi bi-right nav-btn bi-arrow-left-circle invisible"></i>
 			<img id="image" class="img-fluid img-thumbnail rounded-circle border border-dark-subtle mb-3 w-auto" src="">
+			<i class="bi bi-left nav-btn bi-arrow-right-circle invisible"></i>
 
 			<p id="title" class="text-muted mb-1 fs-5">Ciao, il mio nome è</h4>
-			<h2 id="content" class="h2 fs-1"></h2>
+			<h2 id="content" class="h2 fs-1 user-select-all"></h2>
 
-			<ul id="icons" class="list-inline list-group-horizontal-md list-group justify-content-center align-items-center">
+			<ul id="icons"
+				class="list-inline list-group-horizontal-md list-group justify-content-center align-items-center">
 				<li data-fn="name" class="active"></li>
 				<li data-fn="mail"></li>
 				<li data-fn="birthday"></li>

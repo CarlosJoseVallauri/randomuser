@@ -37,3 +37,29 @@
 #icons li[data-fn=password]{
     background-position: -340px -48px;
 }
+
+.nav-btn {
+  opacity: 0.2;
+  transition: 0.3s ease;
+  font-size: 1.7em;
+}
+
+.nav-btn:hover {
+  opacity: 1;
+  font-size: 2.4em;
+}
+
+.dropdown-item:active,
+.dropdown-item:focus {
+  background-color: transparent !important;
+  color: inherit !important;
+}
+
+.dropdown-item:hover {
+  background-color: transparent !important;
+}
+
+.dropdown-item {
+  cursor: default !important;
+}
+

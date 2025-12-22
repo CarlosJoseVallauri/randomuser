@@ -1,43 +1,75 @@
 let loadedArray = [];
+let currentPerson = 0;
 
 listeners();
 datasets();
 firstload();
 
-function firstload(){
-    load(
-        {
-            results: 1,
-            nat: "",
-            gender: ""
-        },
-        // Content dataset 
-        (person) => {
-            Object.entries({
-                name: `${person?.name?.first} ${person?.name?.last}`,
-                mail: person?.email,
-                birthday: new Date(person?.dob?.date).toLocaleDateString(),
-                address: `${person?.location?.street?.name} ${person?.location?.street?.number}`,
-                phone: person?.cell,
-                password: person?.login?.password
-            }).forEach(content => $(`#icons li[data-fn=${content[0]}]`).data("content", content[1]));
-
-            $("#image").attr("src", person?.picture?.large);
-            $("#content").text($("#icons li.active").data("content"));
-        }
-    );
+function firstload() {
+    load({results: 1}, loadPerson);
 }
 
-function listeners(){
-    $("#icons").on("mouseover", "li", function(){
+function listeners() {
+    $("#icons").on("mouseover", "li", function () {
         $("#icons li.active").removeClass("active");
         $(this).addClass("active");
         $("#title").text($(this).data("title"));
         $("#content").text($(this).data("content"));
     });
+
+    $("#rnNum").on("input", function () { $(this).siblings("label").text(`Numero persone: ${this.value}`) });
+
+    $(".bi-left").on("click", () => {
+        if(--currentPerson === -1){
+            currentPerson = loadedArray.length - 1;
+        }
+        loadPerson(loadedArray.at(currentPerson));
+    });
+
+    $(".bi-right").on("click", () => {
+        if(++currentPerson === loadedArray.length){
+            currentPerson = 0;
+        }
+        loadPerson(loadedArray.at(currentPerson));
+    });
+
+    $("#search").on("input", function(){
+        const VALUE = $(this).val();
+        const RESULT = loadedArray.deepSearch(VALUE);
+
+        if(RESULT){
+            loadPerson(RESULT);
+        }
+        else{
+            loadEmpty();
+        }
+    });
+
+    $("#btnReset").on("click", () => {
+        $("#genAll").prop("checked", true);
+        $("input[name=chkNat]").prop("checked", false);
+        $("#rnNum").val(1).siblings("label").text(`Numero persone: 1`);
+    });
+
+    $("#btnRequest").on("click", async () => {
+        const PARAMS = {
+            results: parseInt($("#rnNum").val()),
+            gender: $("input[name=rdGen]:checked").val(),
+            nat: $("input[name=chkNat]:checked").map((_, ck) => ck.value).toArray().join(",")
+        };
+    
+        await load(PARAMS, loadPerson);
+
+        if(PARAMS.results === 1){
+            $("i").addClass("invisible");
+        }
+        else{
+            $("i").removeClass("invisible");
+        }
+    });
 }
 
-function datasets(){
+function datasets() {
     // Title dataset
     Object.entries({
         name: "Ciao, il mio nome è",
@@ -47,4 +79,34 @@ function datasets(){
         phone: "Il mio numero di telefono è",
         password: "La mia password è"
     }).forEach(title => $(`#icons li[data-fn=${title[0]}]`).data("title", title[1]));
+}
+
+function loadPerson(person) {
+    Object.entries({
+        name: `${person?.name?.first} ${person?.name?.last}`,
+        mail: person?.email,
+        birthday: new Date(person?.dob?.date).toLocaleDateString(),
+        address: `${person?.location?.street?.name} ${person?.location?.street?.number}`,
+        phone: person?.cell,
+        password: person?.login?.password
+    }).forEach(content => $(`#icons li[data-fn=${content[0]}]`).data("content", content[1]));
+
+    $("#title").show();
+    $("#image").attr("src", person?.picture?.large);
+    $("#content").text($("#icons li.active").data("content"));
+}
+
+function loadEmpty(){
+    Object.entries({
+        name: "Nessuna persona trovata",
+        mail: "Nessuna persona trovata",
+        birthday: "Nessuna persona trovata",
+        address: "Nessuna persona trovata",
+        phone: "Nessuna persona trovata",
+        password: "Nessuna persona trovata"
+    }).forEach(content => $(`#icons li[data-fn=${content[0]}]`).data("content", content[1]));
+
+    $("#title").hide();
+    $("#image").attr("src", "./img/default.png");
+    $("#content").text($("#icons li.active").data("content"));
 }
