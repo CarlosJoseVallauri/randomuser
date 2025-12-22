@@ -5,14 +5,37 @@
 <head lang="it">
 	<meta charset="UTF-8">
 	<title> randomUser.me </title>
-	<link rel="stylesheet" href="./css/index.css" />
+	<link rel="stylesheet" href="./css/style.css" />
+	<link rel='stylesheet' href='./node_modules/bootstrap/dist/css/bootstrap.min.css'>
+	<link rel='stylesheet' href='./node_modules/bootstrap-icons/font/bootstrap-icons.min.css'>
+	<script src="./node_modules/jquery/dist/jquery.min.js"></script>
 	<script src="./node_modules/axios/dist/axios.min.js"></script>
 	<script src="./js/libreria.js"></script>
-	<script src="./js/index.js"></script>
+	<script src="./js/load.js"></script>
+	<script defer src="./js/dom.js"></script>
 </head>
 
-<body>
+<body class="bg-dark text-light">
+	<div class="container-fluid h-100 p-5">
+		<h1 class="h1 fw-light text-center mb-5">RANDOM USER</h1>
 
+		<div class="container col-lg-6 col-md-9 p-3 border bg-light rounded text-dark text-center">
+			<i class=""></i>
+			<img id="image" class="img-fluid img-thumbnail rounded-circle border border-dark-subtle mb-3 w-auto" src="">
+
+			<p id="title" class="text-muted mb-1 fs-5">Ciao, il mio nome è</h4>
+			<h2 id="content" class="h2 fs-1"></h2>
+
+			<ul id="icons" class="list-inline list-group-horizontal-md list-group justify-content-center align-items-center">
+				<li data-fn="name" class="active"></li>
+				<li data-fn="mail"></li>
+				<li data-fn="birthday"></li>
+				<li data-fn="address"></li>
+				<li data-fn="phone"></li>
+				<li data-fn="password"></li>
+			</ul>
+		</div>
+	</div>
 </body>
 
 </html>
