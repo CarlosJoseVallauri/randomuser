@@ -21,7 +21,7 @@ function listeners() {
     $("#rnNum").on("input", function () { $(this).siblings("label").text(`Numero persone: ${this.value}`) });
 
     $(".bi-left").on("click", () => {
-        if(--currentPerson === -1){
+        if(--currentPerson < 0){
             if(searchArray){
                 currentPerson = searchArray.length - 1;
             }
@@ -39,13 +39,13 @@ function listeners() {
 
     $(".bi-right").on("click", () => {
         if(searchArray){
-            if(++currentPerson === searchArray.length){
+            if(++currentPerson >= searchArray.length){
                 currentPerson = 0;
             }
             loadPerson(searchArray.at(currentPerson));
         }
         else{
-            if(++currentPerson === loadedArray.length){
+            if(++currentPerson >= loadedArray.length){
                 currentPerson = 0;
             }
             loadPerson(loadedArray.at(currentPerson));
@@ -120,6 +120,18 @@ function listeners() {
             .appendTo("#viewer");
 
         $(this).text("Nascondi JSON");
+    });
+
+    $("#btnDown").on("click", () => {
+        const person = searchArray ? searchArray[currentPerson] : loadedArray[currentPerson];
+
+        $("<a>")
+            .attr({
+                href: URL.createObjectURL(new Blob([JSON.stringify(person, null, 2)], {type: 'application/json'})),
+                download: `${person.name.first}_${person.name.last}.json`
+            })
+            .get(0)
+            .click();
     });
 
     $(window).on("resize", () => {
