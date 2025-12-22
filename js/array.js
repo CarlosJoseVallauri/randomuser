@@ -4,7 +4,7 @@ Object.defineProperties(Array.prototype,
     {
         deepSearch: {
             value: function deepSearch(string) {
-                return this.find(obj => this.__deepContains__(obj, string));
+                return this.filter(obj => this.__deepContains__(obj, string));
             }
         },
         __deepContains__: {

@@ -1,4 +1,5 @@
 let loadedArray = [];
+let searchArray;
 let currentPerson = 0;
 
 listeners();
@@ -21,26 +22,52 @@ function listeners() {
 
     $(".bi-left").on("click", () => {
         if(--currentPerson === -1){
-            currentPerson = loadedArray.length - 1;
+            if(searchArray){
+                currentPerson = searchArray.length - 1;
+            }
+            else{
+                currentPerson = loadedArray.length - 1;
+            }
+        }  
+        if(searchArray){
+            loadPerson(searchArray.at(currentPerson));
         }
-        loadPerson(loadedArray.at(currentPerson));
+        else{
+            loadPerson(loadedArray.at(currentPerson));
+        }
     });
 
     $(".bi-right").on("click", () => {
-        if(++currentPerson === loadedArray.length){
-            currentPerson = 0;
+        if(searchArray){
+            if(++currentPerson === searchArray.length){
+                currentPerson = 0;
+            }
+            loadPerson(searchArray.at(currentPerson));
         }
-        loadPerson(loadedArray.at(currentPerson));
+        else{
+            if(++currentPerson === loadedArray.length){
+                currentPerson = 0;
+            }
+            loadPerson(loadedArray.at(currentPerson));
+        }
     });
 
     $("#search").on("input", function(){
         const VALUE = $(this).val();
         const RESULT = loadedArray.deepSearch(VALUE);
+        $("i").addClass("invisible");
 
-        if(RESULT){
-            loadPerson(RESULT);
+        if(RESULT.at(0)){
+            searchArray = RESULT;
+            
+            if(RESULT.length !== 1){
+                $("i").removeClass("invisible");
+            }
+
+            loadPerson(RESULT.at(0));
         }
         else{
+            searchArray = undefined;
             loadEmpty();
         }
     });
@@ -52,6 +79,8 @@ function listeners() {
     });
 
     $("#btnRequest").on("click", async () => {
+        searchArray = undefined;
+
         const PARAMS = {
             results: parseInt($("#rnNum").val()),
             gender: $("input[name=rdGen]:checked").val(),
@@ -72,6 +101,35 @@ function listeners() {
         loadedArray.sort(SORTFUNCS[$(this).data("sort")]);
         loadPerson(loadedArray[currentPerson = 0]);
     });
+
+    $("#btnShow").on("click", function(){
+        if($(this).text() === "Nascondi JSON"){
+            $("andypf-json-viewer").remove();
+            $(this).text("Mostra JSON");
+            return;
+        }
+
+        $("<andypf-json-viewer/>")
+            .attr({
+                "data": JSON.stringify(loadedArray[currentPerson]),
+                "theme": "ia-dark",
+                "indent": "3",
+                "expanded": "true",
+                "show-copy": "false"
+            })
+            .appendTo("#viewer");
+
+        $(this).text("Nascondi JSON");
+    });
+
+    $(window).on("resize", () => {
+        if(bootstrapDetectBreakpoint().index < 2){
+            $("#btnShow").attr("disabled", "true");
+        }
+        else{
+            $("#btnShow").removeAttr("disabled");
+        }
+    })
 }
 
 function datasets() {
