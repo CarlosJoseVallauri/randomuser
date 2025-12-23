@@ -21,6 +21,7 @@ function listeners() {
     $("#rnNum").on("input", function () { $(this).siblings("label").text(`Numero persone: ${this.value}`) });
 
     $(".bi-left").on("click", () => {
+        let person;
         if(--currentPerson < 0){
             if(searchArray){
                 currentPerson = searchArray.length - 1;
@@ -29,27 +30,29 @@ function listeners() {
                 currentPerson = loadedArray.length - 1;
             }
         }  
-        if(searchArray){
-            loadPerson(searchArray.at(currentPerson));
-        }
-        else{
-            loadPerson(loadedArray.at(currentPerson));
-        }
+        
+        person = searchArray ? searchArray.at(currentPerson) : loadedArray.at(currentPerson);
+        loadPerson(person);
+        loadJSON(person);
     });
 
     $(".bi-right").on("click", () => {
+        let person;
         if(searchArray){
             if(++currentPerson >= searchArray.length){
                 currentPerson = 0;
             }
-            loadPerson(searchArray.at(currentPerson));
+            person = searchArray.at(currentPerson);
         }
         else{
             if(++currentPerson >= loadedArray.length){
                 currentPerson = 0;
             }
-            loadPerson(loadedArray.at(currentPerson));
+            person = loadedArray.at(currentPerson);
         }
+
+        loadPerson(person);
+        loadJSON(person);
     });
 
     $("#search").on("input", function(){
@@ -142,6 +145,12 @@ function listeners() {
             $("#btnShow").removeAttr("disabled");
         }
     })
+}
+
+function loadJSON(person){
+    if($("andypf-json-viewer").length === 1){
+        $("andypf-json-viewer").prop("data", JSON.stringify(person));
+    }
 }
 
 function datasets() {
