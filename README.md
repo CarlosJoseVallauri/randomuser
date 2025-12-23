@@ -21,7 +21,8 @@ L'interfaccia centrale permette di navigare tra i vari record caricati, mostrand
 
 ## **Librerie utilizzate**
 - **[Bootstrap 5.3](https://getbootstrap.com/)**
--  **[bootstrap-detect-breakpoint 1.1.9](https://github.com/shaack/bootstrap-detect-breakpoint?tab=readme-ov-file)**
+- **[bootstrap-detect-breakpoint 1.1.9](https://github.com/shaack/bootstrap-detect-breakpoint?tab=readme-ov-file)**
 - **[jQuery 3.7.1](https://jquery.com/)**
 - **[@andypf/json-viewer 2.2.0](https://www.npmjs.com/package/@andypf/json-viewer)**
 - **[axios 0.27.2](https://www.npmjs.com/package/axios/v/0.27.2)**
+- **[country-flag-emoji-polyfill](https://github.com/talkjs/country-flag-emoji-polyfill)**

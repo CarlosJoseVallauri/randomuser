@@ -62,3 +62,7 @@
 .dropdown-item.no-mouse {
   cursor: default !important;
 }
+
+.flag{
+  font-family: "Twemoji Country Flags";
+}

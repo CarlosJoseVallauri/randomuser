@@ -18,6 +18,10 @@
 	<script src="./js/libreria.js"></script>
 	<script src="./js/load.js"></script>
 	<script defer src="./js/dom.js"></script>
+	<script type="module" defer>
+		import { polyfillCountryFlagEmojis } from "https://cdn.skypack.dev/country-flag-emoji-polyfill";
+		polyfillCountryFlagEmojis();
+	</script>
 </head>
 
 <body class="bg-dark text-light">
@@ -39,7 +43,7 @@
 								<li class="dropdown-item no-mouse">
 									<div class="form-check">
 										<label for="genAll">
-											Tutti
+											👥 Tutti
 										</label>
 										<input checked class="form-check-input" type="radio" id="genAll" name="rdGen" value="all">
 									</div>
@@ -47,7 +51,7 @@
 								<li class="dropdown-item no-mouse">
 									<div class="form-check">
 										<label for="genMale">
-											Maschio
+											♂️ Maschio
 										</label>
 										<input class="form-check-input" type="radio" id="genMale" name="rdGen" value="male">
 									</div>
@@ -55,7 +59,7 @@
 								<li class="dropdown-item no-mouse">
 									<div class="form-check">
 										<label for="genFem">
-											Femmina
+											♀️ Femmina
 										</label>
 										<input class="form-check-input" type="radio" id="genFem" name="rdGen" value="female">
 									</div>
@@ -66,7 +70,7 @@
 								<li class="dropdown-item no-mouse">
 									<div class="form-check">
 										<label for="natFr">
-											Francia
+											<span class="flag">🇫🇷</span> Francia
 										</label>
 										<input class="form-check-input" type="checkbox" id="natFr" name="chkNat" value="fr">
 									</div>
@@ -74,7 +78,7 @@
 								<li class="dropdown-item no-mouse">
 									<div class="form-check">
 										<label for="natGe">
-											Germania
+											<span class="flag">🇩🇪</span> Germania
 										</label>
 										<input class="form-check-input" type="checkbox" id="natGe" name="chkNat" value="de">
 									</div>
@@ -82,7 +86,7 @@
 								<li class="dropdown-item no-mouse">
 									<div class="form-check">
 										<label for="natEs">
-											Spagna
+											<span class="flag">🇪🇸</span> Spagna
 										</label>
 										<input class="form-check-input" type="checkbox" id="natEs" name="chkNat" value="es">
 									</div>
@@ -90,7 +94,7 @@
 								<li class="dropdown-item no-mouse">
 									<div class="form-check">
 										<label for="natGb">
-											Regno Unito
+											<span class="flag">🇬🇧</span> Regno Unito
 										</label>
 										<input class="form-check-input" type="checkbox" id="natGb" name="chkNat" value="gb">
 									</div>
@@ -98,7 +102,7 @@
 								<li class="dropdown-item no-mouse">
 									<div class="form-check">
 										<label for="natUs">
-											Stati Uniti
+											<span class="flag">🇺🇸</span> Stati Uniti
 										</label>
 										<input class="form-check-input" type="checkbox" id="natUs" name="chkNat" value="us">
 									</div>
