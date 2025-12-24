@@ -26,3 +26,7 @@ L'interfaccia centrale permette di navigare tra i vari record caricati, mostrand
 - **[@andypf/json-viewer 2.2.0](https://www.npmjs.com/package/@andypf/json-viewer)**
 - **[axios 0.27.2](https://www.npmjs.com/package/axios/v/0.27.2)**
 - **[country-flag-emoji-polyfill](https://github.com/talkjs/country-flag-emoji-polyfill)**
+
+
+## **Prerequisiti**
+Eseguire `npm i` in un qualsiasi terminale all' interno della cartella del progetto per installare le dipendenze.
