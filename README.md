@@ -12,7 +12,7 @@ Semplice interfaccia grafica responsive per l'utilizzo dell'API randomuser.
 
 ### **Ricerca**
 
-La casella di testo apposita permette di effettuare una ricerca profonda all'interno della lista di utenti, mostrando tutte le corrispondenze presenti in qualsiasi proprietà dei vari oggetti.
+La casella di testo apposita permette di effettuare una ricerca all'interno della lista di utenti, mostrando tutte le corrispondenze di nome e cognome presenti.
 
 ### **Scheda principale**
 

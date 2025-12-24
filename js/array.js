@@ -4,30 +4,8 @@ Object.defineProperties(Array.prototype,
     {
         deepSearch: {
             value: function deepSearch(string) {
-                return this.filter(obj => this.__deepContains__(obj, string));
+                return this.filter(obj => `${obj.name.first} ${obj.name.last}`.toLowerCase().includes(string.toLowerCase()));
             }
-        },
-        __deepContains__: {
-            value: function __deepContains__(value, search) {
-                if (value == null) return false;
-
-                if (typeof value === "string" || typeof value === "number" || typeof value === "boolean") {
-                    return String(value).includes(search);
-                }
-
-                if (Array.isArray(value)) {
-                    return value.some(v => __deepContains__(v, search));
-                }
-
-                if (typeof value === "object") {
-                    return Object.values(value).some(v => __deepContains__(v, search));
-                }
-
-                return false;
-            },
-            writable: false,
-            enumerable: false,
-            configurable: false
         }
     }
 );
