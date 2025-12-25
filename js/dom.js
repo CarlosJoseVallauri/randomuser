@@ -69,8 +69,7 @@ $(() => {
                     $("i").removeClass("invisible");
                 }
 
-                currentPerson = 0;
-                loadPerson(RESULT.at(currentPerson));
+                loadPerson(RESULT.at(currentPerson = 0));
             }
             else {
                 searchArray = undefined;
