@@ -66,3 +66,7 @@
 .flag{
   font-family: "Twemoji Country Flags";
 }
+
+.text-outline-green{
+  text-shadow: -1px -1px 0 #198754, 1px -1px 0 #198754, -1px 1px 0 #198754, 1px 1px 0 #198754;
+}
