@@ -8,6 +8,10 @@ $(() => {
     firstload();
 
     async function firstload() {
+        if(bootstrapDetectBreakpoint().index < 2){
+            $("#btnShow").attr("disabled", "true");
+        }
+
         currentPerson = 0;
         loadedArray = await load({ results: 1 }, loadPerson);
     }
