@@ -64,13 +64,13 @@ $(() => {
         $("#search").on("input", function () {
             const VALUE = $(this).val();
             const RESULT = loadedArray.deepSearch(VALUE);
-            $("i").addClass("invisible");
+            $(".nav-btn").addClass("invisible");
 
             if (RESULT.at(0)) {
                 searchArray = RESULT;
 
                 if (RESULT.length !== 1) {
-                    $("i").removeClass("invisible");
+                    $(".nav-btn").removeClass("invisible");
                 }
 
                 loadPerson(RESULT.at(currentPerson = 0));
@@ -100,10 +100,15 @@ $(() => {
             currentPerson = 0;
 
             if (PARAMS.results === 1) {
-                $("i").addClass("invisible");
+                $(".nav-btn").addClass("invisible");
             }
             else {
-                $("i").removeClass("invisible");
+                $(".nav-btn").removeClass("invisible");
+            }
+
+            if($("#nav-content").hasClass("show") && bootstrapDetectBreakpoint().index < 2){
+                $(".dropdown-menu").collapse("hide");
+                $(".navbar-collapse").collapse("hide");
             }
         });
 
