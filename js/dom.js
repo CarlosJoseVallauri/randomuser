@@ -8,7 +8,7 @@ $(() => {
     firstload();
 
     async function firstload() {
-        if(bootstrapDetectBreakpoint().index < 2){
+        if (bootstrapDetectBreakpoint().index < 2) {
             $("#btnShow").attr("disabled", "true");
         }
 
@@ -106,13 +106,11 @@ $(() => {
                 $(".nav-btn").removeClass("invisible");
             }
 
-            if($("#nav-content").hasClass("show") && bootstrapDetectBreakpoint().index < 2){
-                $(".dropdown-menu").collapse("hide");
-                $(".navbar-collapse").collapse("hide");
-            }
+            collapseNavbar();
         });
 
         $("#sortList li").on("click", function () {
+            collapseNavbar();
             loadedArray.sort(SORTFUNCS[$(this).data("sort")]);
             loadPerson(loadedArray[currentPerson = 0]);
         });
@@ -205,5 +203,12 @@ $(() => {
         $("#title").hide();
         $("#image").attr("src", "./img/default.png");
         $("#content").text($("#icons li.active").data("content"));
+    }
+
+    function collapseNavbar() {
+        if ($("#nav-content").hasClass("show") && bootstrapDetectBreakpoint().index < 2) {
+            $(".dropdown-menu").collapse("hide");
+            $(".navbar-collapse").collapse("hide");
+        }
     }
 });
