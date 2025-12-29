@@ -2,6 +2,10 @@
   transition: background-color 0.5s ease-in-out;
 }
 
+.mt-max{
+  margin-top: 7rem !important;
+} 
+
 #icons li{
   background-image: url("../img/card_icons.png");
   cursor: pointer;
