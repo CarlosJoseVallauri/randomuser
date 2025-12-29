@@ -4,10 +4,11 @@ Semplice interfaccia grafica responsive per l'utilizzo dell'API randomuser.
 ## **Funzionamento dell'interfaccia**
 
 ### **Navbar**
--  **Filtri** Sono disponibili diversi filtri riguardanti il genere, nazione e numero di risultati
-- **Ordinamento** È  supportato ordinare la lista di utenti per nome, età e casualmente.
-- **Visualizzazione JSON** Viene mostrata in fondo alla pagina una sezione apposita per il raw JSON del record.
-- **Download JSON** Possibilità di scaricare il file JSON completo del record selezionato.
+-  **Filtri**: Sono disponibili diversi filtri riguardanti il genere, nazione e numero di risultati
+- **Ordinamento**: È  supportato ordinare la lista di utenti per nome, età e casualmente.
+- **Visualizzazione JSON**: Viene mostrata in fondo alla pagina una sezione apposita per il raw JSON del record.
+- **Download JSON**: Possibilità di scaricare il file JSON completo del record selezionato.
+- **Temi**: Sono supportati sia tema chiaro che tema scuro, intercambiabili sia attraverso apposito pulsante che automaticamente al cambio di tema predefinito nell'OS.
 
 
 ### **Ricerca**
