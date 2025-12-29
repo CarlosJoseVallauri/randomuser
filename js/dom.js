@@ -122,10 +122,12 @@ $(() => {
                 return;
             }
 
+            const THEME = $("#theme-btn").data("theme") === "DARK" ? "ia-dark" : "ia-light";
+
             $("<andypf-json-viewer/>")
                 .attr({
                     "data": JSON.stringify(loadedArray[currentPerson]),
-                    "theme": "ia-dark",
+                    "theme": THEME,
                     "indent": "3",
                     "expanded": "true",
                     "show-copy": "false"
