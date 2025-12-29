@@ -1,25 +1,23 @@
 "use strict";
 
 $(() => {
-    const THEMES = {LIGHT: lightTheme, DARK: darkTheme};
-
-    $("#theme-btn").on("click", function(){
+    $("#theme-btn")
+    .data("theme", detectTheme())
+    .on("click", function(){
         if($(this).data("theme") === "DARK"){
-            THEMES.LIGHT.call();
+            lightTheme();
             $(this).data("theme", "LIGHT");
         }
         else{
-            THEMES.DARK.call();
+            darkTheme();
             $(this).data("theme", "DARK");
         }
     });
 
-    const currentTheme = detectTheme();
-    currentTheme.call();
-    $("#theme-btn").data("theme", currentTheme === THEMES.DARK ? "DARK" : "LIGHT");
-
     function detectTheme(){
-        return window.matchMedia('(prefers-color-scheme: dark)').matches ? THEMES.DARK : THEMES.LIGHT;
+        const THEME = window.matchMedia('(prefers-color-scheme: dark)');
+        THEME.addEventListener("change", e => e.matches ? darkTheme() :lightTheme());
+        return THEME.matches ? "DARK" : "LIGHT";
     }
 
     function lightTheme(){

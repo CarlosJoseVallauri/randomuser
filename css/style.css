@@ -1,41 +1,45 @@
+*{
+  transition: background-color 0.5s ease-in-out;
+}
+
 #icons li{
-    background-image: url("../img/card_icons.png");
-    cursor: pointer;
-    display: block;
-    width: 40px;
-    height: 48px;
-    margin: 20px;
-    background-size: 378px;
-    background-position-y: -48px;
-    transition: all .25s ease-out;
+  background-image: url("../img/card_icons.png");
+  cursor: pointer;
+  display: block;
+  width: 40px;
+  height: 48px;
+  margin: 20px;
+  background-size: 378px;
+  background-position-y: -48px;
+  transition: all .25s ease-out;
 }
 
 #icons li.active{
-    background-position-y: -96px !important;
+  background-position-y: -96px !important;
 }
 
 #icons li[data-fn=name]{
-    background-position: 0px -48px;
+  background-position: 0px -48px;
 }
 
 #icons li[data-fn=mail]{
-    background-position: -68px -48px;
+  background-position: -68px -48px;
 }
 
 #icons li[data-fn=birthday]{
-    background-position: -136px -48px;
+  background-position: -136px -48px;
 }
 
 #icons li[data-fn=address]{
-    background-position: -204px -48px;
+  background-position: -204px -48px;
 }
 
 #icons li[data-fn=phone]{
-    background-position: -272px -48px;
+  background-position: -272px -48px;
 }
 
 #icons li[data-fn=password]{
-    background-position: -340px -48px;
+  background-position: -340px -48px;
 }
 
 .nav-btn {
