@@ -3,17 +3,7 @@
 $(() => {
     $("#theme-btn")
     .data("theme", detectTheme())
-    .on("click", applyTheme);
-
-    applyTheme();
-
-    function detectTheme(){
-        const THEME = window.matchMedia('(prefers-color-scheme: dark)');
-        THEME.addEventListener("change", e => e.matches ? darkTheme() :lightTheme());
-        return THEME.matches ? "DARK" : "LIGHT";
-    }
-
-    function applyTheme(){
+    .on("click", function(){
         if($(this).data("theme") === "DARK"){
             lightTheme();
             $(this).data("theme", "LIGHT");
@@ -22,6 +12,21 @@ $(() => {
             darkTheme();
             $(this).data("theme", "DARK");
         }
+    });
+
+    if($("#theme-btn").data("theme") === "DARK"){
+        darkTheme();
+    }
+    else{
+        lightTheme();
+    }
+
+    setTimeout(() => $("*").addClass("bg-transition"), 0);
+
+    function detectTheme(){
+        const THEME = window.matchMedia('(prefers-color-scheme: dark)');
+        THEME.addEventListener("change", e => e.matches ? darkTheme() :lightTheme());
+        return THEME.matches ? "DARK" : "LIGHT";
     }
 
     function lightTheme(){
