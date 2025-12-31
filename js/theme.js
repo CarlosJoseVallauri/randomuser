@@ -1,9 +1,19 @@
 "use strict";
 
 $(() => {
+    applyTheme();
+    
     $("#theme-btn")
     .data("theme", detectTheme())
-    .on("click", function(){
+    .on("click", applyTheme);
+
+    function detectTheme(){
+        const THEME = window.matchMedia('(prefers-color-scheme: dark)');
+        THEME.addEventListener("change", e => e.matches ? darkTheme() :lightTheme());
+        return THEME.matches ? "DARK" : "LIGHT";
+    }
+
+    function applyTheme(){
         if($(this).data("theme") === "DARK"){
             lightTheme();
             $(this).data("theme", "LIGHT");
@@ -12,12 +22,6 @@ $(() => {
             darkTheme();
             $(this).data("theme", "DARK");
         }
-    });
-
-    function detectTheme(){
-        const THEME = window.matchMedia('(prefers-color-scheme: dark)');
-        THEME.addEventListener("change", e => e.matches ? darkTheme() :lightTheme());
-        return THEME.matches ? "DARK" : "LIGHT";
     }
 
     function lightTheme(){
