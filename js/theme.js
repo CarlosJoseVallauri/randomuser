@@ -1,11 +1,11 @@
 "use strict";
 
 $(() => {
-    applyTheme();
-    
     $("#theme-btn")
     .data("theme", detectTheme())
     .on("click", applyTheme);
+
+    applyTheme();
 
     function detectTheme(){
         const THEME = window.matchMedia('(prefers-color-scheme: dark)');
