@@ -2,34 +2,27 @@
 
 $(() => {
     $("#theme-btn")
-    .data("theme", detectTheme())
-    .on("click", function(){
-        if($(this).data("theme") === "DARK"){
-            lightTheme();
-            $(this).data("theme", "LIGHT");
-        }
-        else{
-            darkTheme();
-            $(this).data("theme", "DARK");
-        }
-    });
+        .data("theme", detectTheme())
+        .on("click", function () {
+            if ($(this).data("theme") === "DARK") {
+                lightTheme();
+                $(this).data("theme", "LIGHT");
+            }
+            else {
+                darkTheme();
+                $(this).data("theme", "DARK");
+            }
+        });
 
-    if($("#theme-btn").data("theme") === "DARK"){
-        darkTheme();
-    }
-    else{
-        lightTheme();
-    }
+    setup();
 
-    setTimeout(() => $("*").addClass("bg-transition"), 0);
-
-    function detectTheme(){
+    function detectTheme() {
         const THEME = window.matchMedia('(prefers-color-scheme: dark)');
-        THEME.addEventListener("change", e => e.matches ? darkTheme() :lightTheme());
+        THEME.addEventListener("change", e => e.matches ? darkTheme() : lightTheme());
         return THEME.matches ? "DARK" : "LIGHT";
     }
 
-    function lightTheme(){
+    function lightTheme() {
         $("#theme-icon").removeClass("bi-moon-fill").addClass("bi-sun-fill");
         $("body").removeClass("bg-dark text-light").addClass("bg-dark-subtle");
         $(".navbar").removeClass("navbar-dark bg-dark").addClass("navbar-light bg-light");
@@ -38,12 +31,12 @@ $(() => {
         $("#main-view").removeClass("bg-light").addClass("bg-light-subtle");
         $(".dropdown-menu").removeClass("dropdown-menu-dark");
 
-        if($("andypf-json-viewer").length === 1){
+        if ($("andypf-json-viewer").length === 1) {
             $("andypf-json-viewer").attr("theme", "ia-light");
         }
     }
 
-    function darkTheme(){
+    function darkTheme() {
         $("#theme-icon").removeClass("bi-sun-fill").addClass("bi-moon-fill");
         $("body").removeClass("bg-dark-subtle").addClass("bg-dark text-light");
         $(".navbar").removeClass("navbar-light bg-light").addClass("navbar-dark bg-dark");
@@ -52,8 +45,19 @@ $(() => {
         $("#main-view").removeClass("bg-light-subtle").addClass("bg-light");
         $(".dropdown-menu").addClass("dropdown-menu-dark");
 
-        if($("andypf-json-viewer").length === 1){
+        if ($("andypf-json-viewer").length === 1) {
             $("andypf-json-viewer").attr("theme", "ia-dark");
         }
+    }
+
+    function setup() {
+        if ($("#theme-btn").data("theme") === "DARK") {
+            darkTheme();
+        }
+        else {
+            lightTheme();
+        }
+
+        setTimeout(() => $("*").addClass("bg-transition"), 0);
     }
 })
